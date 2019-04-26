@@ -2,7 +2,12 @@ import API from './api';
 
 export {
   login,
-  postNewUser
+  postNewUser,
+  getAllPosts,
+  getMyPosts,
+  deletePost,
+  postNewPost,
+  putExistingPost
 };
 
 function login(username, password) {
@@ -23,4 +28,29 @@ function postNewUser(username, password, fullname, email, role) {
     fullname,
     email,
     role }).then(result => result.data);
+}
+
+function getAllPosts() {
+  return API.get('/posts').then(res => res.data);
+}
+
+function getMyPosts(iduser) {
+  return API.get('/posts/all/'+iduser).then(res => res.data);
+}
+
+function deletePost(idpost) {
+  return API.delete('/posts/'+idpost).then(result => result.data);
+}
+
+function postNewPost(iduser, title, description) {
+  return API.post('/posts', {
+    iduser,
+    title,
+    description}).then(result => result.data);
+}
+
+function putExistingPost(idpost, title, description) {
+  return API.put('/posts/'+idpost, {
+    title,
+    description}).then(result => result.data);
 }

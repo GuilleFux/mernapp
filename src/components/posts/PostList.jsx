@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
 import { getAllPosts } from "../../utils/apicalls.jsx";
 import { getDateInStrFormat } from "../../utils/utils.jsx";
+
 class PostList extends Component {
     state = {
       posts: []

@@ -27,6 +27,7 @@ class Signin extends Component {
   }
 
   onSignin(e) {
+    console.log("Entramos en el metodo onSignin");
     e.preventDefault();
     const {
       username,
@@ -37,11 +38,13 @@ class Signin extends Component {
   }
 
   checkLogin(res, username) {
+    console.log("Entramos en el metodo checkLogin");
     //if user is valid..
     if (res.message === 'ok') {
       sessionStorage.setItem('role', res.role);
       sessionStorage.setItem('iduser', res.id);
       sessionStorage.setItem('username', username);
+      console.log("res.role: " + res.role+", res.id: " + res.id + ", res.username: "+username);
       this.props.history.push("/home");
     }
     //else, show error message...
@@ -58,7 +61,7 @@ class Signin extends Component {
       <Container>
         <Row>
           <Col xs= "9">
-<PostList/>
+            <PostList/>
           </Col>
           <Col xs="3">
             <Card body>
