@@ -58,6 +58,7 @@ class AddPost extends Component {
         <Navbar color="white">
         <ModalFooter>
           <Button color="secondary" onClick={() => this.setState({ show: null })}>Aceptar</Button>
+          {this.state.show}
         </ModalFooter>
         </Navbar>
       </Modal>)
