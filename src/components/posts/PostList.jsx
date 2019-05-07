@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardTitle, Badge, CardBody, Table, Alert } from 'reactstrap';
+import { Row, Col, Card, CardTitle, Badge, CardBody, Table, Alert, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFeatherAlt } from "@fortawesome/free-solid-svg-icons";
 import { getAllPosts } from "../../utils/apicalls.jsx";
 import { getDateInStrFormat } from "../../utils/utils.jsx";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
 class PostList extends Component {
     state = {
@@ -31,7 +32,7 @@ class PostList extends Component {
                     <Alert color="dark">
                       <Row>
                         <Col>
-                          <CardTitle tag="h5"><FontAwesomeIcon icon={faFeatherAlt} /> {post.title}</CardTitle>
+                          <CardTitle tag="h5"><FontAwesomeIcon icon={faFeatherAlt} /> {post.title} <Button style={{width: 25, height: 25}} ><IoMdArrowDropdown/> </Button > </CardTitle>
                           <Card>
                             <CardBody>
                               <Row>

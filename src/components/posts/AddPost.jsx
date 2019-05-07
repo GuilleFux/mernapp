@@ -7,7 +7,8 @@ class AddPost extends Component {
     super(props);
     this.state = {
       title: '',
-      description: ''
+      description: '',
+      show: null
     }
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -43,26 +44,26 @@ class AddPost extends Component {
       this.setState({
         title: "",
         description: "",
-    show: (
-      <Modal color="dark">
-          <Navbar color="dark">
-        <ModalHeader color="dark">
-          <span className="text-white">Propiedades del Usuario</span>
-          </ModalHeader>
-          </Navbar>
-          <Navbar color="white">
-        <ModalBody>
-          <span className="text-green">El post se ha añadido correctamente</span>
-        </ModalBody>
-        </Navbar>
-        <Navbar color="white">
-        <ModalFooter>
-          <Button color="secondary" onClick={() => this.setState({ show: null })}>Aceptar</Button>
-          {this.state.show}
-        </ModalFooter>
-        </Navbar>
-      </Modal>)
-    });
+        show: (
+          <Modal color="dark" isOpen="true">
+              <Navbar color="dark">
+            <ModalHeader color="dark">
+              <span className="text-white">Confirmación</span>
+              </ModalHeader>
+              </Navbar>
+              <Navbar color="warning">
+            <ModalBody>
+              <span className="text-green">El post se ha añadido correctamente</span>
+            </ModalBody>
+            </Navbar>
+            <Navbar color="white">
+            <ModalFooter>
+              <Button color="secondary" onClick={() => this.setState({ show: null })}>Aceptar</Button>
+            </ModalFooter>
+            </Navbar>
+          </Modal>)
+        });
+
       this.props.updateMyPosts();
     }else{
       //TODO Show Modal when an error adding a new post occurs
@@ -72,6 +73,7 @@ class AddPost extends Component {
   render() {
       return (
         <div>
+          {this.state.show}
           <Card body>
             <CardTitle tag="h5">Añadir un nuevo post</CardTitle>
             <Form>
@@ -83,7 +85,7 @@ class AddPost extends Component {
                 <Label for="aDescripcion">Descripción</Label>
                 <Input style={{height: '200px'}} type="textarea" name="description" value={this.state.description} id="aDescripcion" placeholder="Introduce una descripción" onChange={this.handleDescriptionChange}/>
               </FormGroup>
-              <Button onClick={this.addPost}>Añadir</Button>
+              <Button onClick={this.addPost}>Añadir</Button>{this.state.show}
             </Form>
           </Card>
         </div>
